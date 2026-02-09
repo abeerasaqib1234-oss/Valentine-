@@ -1,0 +1,121 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        #yes {
+            background: #ff1493;
+            color: white;
+        }
+        #no {
+            background: #dc143c;
+            color: white;
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 2em;
+            animation: float 6s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="container">
+        <h1>Will You Be My Valentine? 💖</h1>
+        <p>My dearest [Girlfriend's Name], you mean the world to me. Will you be my Valentine this year?</p>
+        <div class="buttons">
+            <button id="yes">Yes! 😍</button>
+            <button id="no">No</button>
+        </div>
+    </div>
+
+    <script>
+        // Generate floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 6 + 's';
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 500);
+
+        // Button interactions
+        document.getElementById('yes').addEventListener('click', function() {
+            alert('Yay! I love you! 💕');
+            // You can add more actions here, like redirecting to a celebration page
+        });
+
+        document.getElementById('no').addEventListener('click', function() {
+            // Make it impossible to say no - button moves or changes
+            const noBtn = document.getElementById('no');
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            noBtn.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+            alert('Nice try! You can\'t say no to this love! 😘');
+        });
+    </script>
+</body>
+</html>
